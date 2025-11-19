@@ -8,7 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Separator } from '@/components/ui/separator';
 
 export default function Index() {
-  const [amount, setAmount] = useState(10000);
+  const [amount, setAmount] = useState(5000);
   const [term, setTerm] = useState(12);
 
   const rate = 15;
@@ -132,13 +132,13 @@ export default function Index() {
                     value={[amount]} 
                     onValueChange={([v]) => setAmount(v)}
                     min={1000} 
-                    max={100000} 
-                    step={1000}
+                    max={10000} 
+                    step={500}
                     className="[&_[role=slider]]:bg-gradient-to-r [&_[role=slider]]:from-purple-600 [&_[role=slider]]:to-pink-600"
                   />
                   <div className="flex justify-between text-sm text-gray-500 mt-2">
                     <span>1 000 ₽</span>
-                    <span>100 000 ₽</span>
+                    <span>10 000 ₽</span>
                   </div>
                 </div>
 
