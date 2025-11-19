@@ -29,9 +29,7 @@ export default function Index() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
               <Icon name="Wallet" className="text-white" size={24} />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              ZaimDrug
-            </span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">GadzhiBank</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-purple-600 transition-colors">
