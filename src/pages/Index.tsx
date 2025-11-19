@@ -9,11 +9,11 @@ import { Separator } from '@/components/ui/separator';
 
 export default function Index() {
   const [amount, setAmount] = useState(5000);
-  const [term, setTerm] = useState(12);
+  const [term, setTerm] = useState(7);
 
-  const rate = 15;
-  const totalPayment = amount * (1 + (rate / 100) * (term / 12));
-  const monthlyPayment = totalPayment / term;
+  const rate = 40;
+  const totalPayment = amount * (1 + (rate / 100) * (term / 30));
+  const dailyPayment = totalPayment / term;
   const totalInterest = totalPayment - amount;
 
   const scrollToSection = (section: string) => {
@@ -111,7 +111,7 @@ export default function Index() {
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Калькулятор займа
             </h2>
-            <p className="text-gray-600 text-lg">Рассчитайте сумму и ежемесячный платеж</p>
+            <p className="text-gray-600 text-lg">Рассчитайте сумму и платеж на срок до 14 дней</p>
           </div>
 
           <Card className="shadow-2xl border-0 animate-scale-in">
@@ -153,19 +153,19 @@ export default function Index() {
                       onChange={(e) => setTerm(Number(e.target.value))}
                       className="text-2xl font-bold border-purple-200 focus:border-purple-500"
                     />
-                    <span className="text-2xl font-bold text-purple-600">мес.</span>
+                    <span className="text-2xl font-bold text-purple-600">дней</span>
                   </div>
                   <Slider 
                     value={[term]} 
                     onValueChange={([v]) => setTerm(v)}
                     min={1} 
-                    max={36} 
+                    max={14} 
                     step={1}
                     className="[&_[role=slider]]:bg-gradient-to-r [&_[role=slider]]:from-purple-600 [&_[role=slider]]:to-pink-600"
                   />
                   <div className="flex justify-between text-sm text-gray-500 mt-2">
-                    <span>1 месяц</span>
-                    <span>36 месяцев</span>
+                    <span>1 день</span>
+                    <span>14 дней</span>
                   </div>
                 </div>
 
@@ -177,9 +177,9 @@ export default function Index() {
                     <span className="text-2xl font-bold text-purple-600">{rate}%</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600 text-lg">Ежемесячный платеж:</span>
+                    <span className="text-gray-600 text-lg">Ежедневный платеж:</span>
                     <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                      {monthlyPayment.toFixed(0)} ₽
+                      {dailyPayment.toFixed(0)} ₽
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -241,8 +241,8 @@ export default function Index() {
                     <Input id="loanAmount" type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} required className="mt-2" />
                   </div>
                   <div>
-                    <Label htmlFor="loanTerm">Срок (месяцев) *</Label>
-                    <Input id="loanTerm" type="number" value={term} onChange={(e) => setTerm(Number(e.target.value))} required className="mt-2" />
+                    <Label htmlFor="loanTerm">Срок (дней) *</Label>
+                    <Input id="loanTerm" type="number" value={term} onChange={(e) => setTerm(Number(e.target.value))} required className="mt-2" max="14" />
                   </div>
                 </div>
 
